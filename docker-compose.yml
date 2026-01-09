@@ -1,0 +1,46 @@
+name: stremio-catalog
+services:
+  stremio-catalog:
+    cpu_shares: 90
+    command: []
+    container_name: stremio-catalog
+    deploy:
+      resources:
+        limits:
+          memory: 3997M
+    environment:
+      - CUSTOM_DOMAIN=
+      - LOCAL_IP=
+      - PORT=7700
+      - HTTPS_PORT=8443
+      - USE_CACHE=true
+      - REFRESH_INTERVAL=6
+    hostname: stremio-catalog
+    image: markflaisz/stremio-catalog:latest
+    labels:
+      icon: https://www.stremio.com/website/stremio-logo.svg
+    ports:
+      - target: 7700
+        published: "7700"
+        protocol: tcp
+      - target: 8443
+        published: "8443"
+        protocol: tcp
+    restart: unless-stopped
+    volumes: []
+    devices: []
+    cap_add: []
+    network_mode: bridge
+    privileged: false
+x-casaos:
+  author: markflaisz
+  category: self
+  hostname: null
+  icon: https://www.stremio.com/website/stremio-logo.svg
+  index: /
+  is_uncontrolled: false
+  port_map: "7700"
+  scheme: http
+  store_app_id: stremio-catalog
+  title:
+    custom: Stremio Catalog
